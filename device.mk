@@ -75,6 +75,12 @@ PRODUCT_PACKAGES += \
 # Emulated Storage
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# Face
+TARGET_NO_PARANOIDSENSE := true
+
+PRODUCT_PACKAGES += \
+    android.hardware.biometrics.face.prebuilt.xml
+
 # Filesystem
 PRODUCT_PACKAGES += \
     fs_config_files
