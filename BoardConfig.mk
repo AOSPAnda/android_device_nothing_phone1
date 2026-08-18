@@ -68,7 +68,8 @@ BOARD_KERNEL_CMDLINE := \
     ip6table_raw.raw_before_defrag=1
 BOARD_KERNEL_PAGESIZE    := 4096
 BOARD_RAMDISK_USE_LZ4 := true
-KERNEL_DEFCONFIG := phone1_defconfig
+TARGET_KERNEL_CONFIG := vendor/lahaina-qgki_defconfig
+KERNEL_FRAGMENT_CONFIG := vendor/debugfs.config
 KERNEL_FULL_LLVM := true
 
 # OTA
