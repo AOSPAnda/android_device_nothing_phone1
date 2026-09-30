@@ -162,12 +162,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.ese.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.ese.xml \
     frameworks/native/data/etc/android.hardware.nfc.uicc.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.nfc.uicc.xml \
 
-# Nothing-fwk
-PRODUCT_PACKAGES += \
-    nothing-fwk
-
-PRODUCT_BOOT_JARS += \
-    nothing-fwk
+# Nothing
+$(call inherit-product, hardware/nothing/common.mk)
 
 # Overlays
 PRODUCT_PACKAGES += \
@@ -179,9 +175,8 @@ PRODUCT_PACKAGES += \
     Phone1SystemUI \
     Phone1SystemUIAOSPA
 
-# Paranoid Glyph
-PRODUCT_PACKAGES += \
-    ParanoidGlyphPhone1
+# Glyph
+$(call soong_config_set,nothing_glyph,device,phone1)
 
 # Partitions - Dynamic
 PRODUCT_BUILD_ODM_IMAGE := true
