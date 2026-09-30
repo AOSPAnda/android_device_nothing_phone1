@@ -15,6 +15,7 @@ allow glyph_app {
   game_service
   gpu_service
   hint_service
+  light_service
   media_session_service
   netstats_service
   sensorservice_service
@@ -29,12 +30,7 @@ allow glyph_app system_app_data_file:{
   lnk_file
 } create_file_perms;
 
-allow glyph_app sysfs_leds:dir r_dir_perms;
-allow glyph_app sysfs_leds:file rw_file_perms;
-
 allow glyph_app sysfs_powershare:dir r_dir_perms;
 allow glyph_app sysfs_powershare:file r_file_perms;
 
-allow glyph_app mnt_vendor_file:dir r_dir_perms;
-allow glyph_app mnt_vendor_file:file rw_file_perms;
 allow glyph_app thermal_service:service_manager find;

@@ -141,7 +141,8 @@ PRODUCT_PACKAGES += \
 
 # Namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(DEVICE_PATH)
+    $(DEVICE_PATH) \
+    hardware/nothing/light
 
 # Neural networks
 PRODUCT_PACKAGES += \
@@ -215,6 +216,14 @@ TARGET_COMMON_QTI_COMPONENTS := \
     usb \
     wfd \
     wlan
+
+# Lights
+# The QTI lights HAL only drives a tri-LED that this device does not have, so
+# the glyph service serves android.hardware.light instead.
+TARGET_PROVIDES_LIGHTS_HAL := true
+
+PRODUCT_PACKAGES += \
+    android.hardware.lights-service.glyph
 
 # Sensors
 PRODUCT_COPY_FILES += \
