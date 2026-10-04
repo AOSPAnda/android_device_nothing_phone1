@@ -87,6 +87,9 @@ using ::android::hardware::sensors::V2_1::Event;
 using ::android::hardware::sensors::V2_1::SensorInfo;
 using ::android::hardware::sensors::V2_1::SensorType;
 
+// Nothing's own sensors count up from the private base, so ours start well clear of them.
+constexpr int32_t kTypeBase = static_cast<int32_t>(SensorType::DEVICE_PRIVATE_BASE) + 0x100;
+
 Sensor::Sensor(int32_t sensorHandle, ISensorsEventCallback* callback)
     : mIsEnabled(false),
       mSamplingPeriodNs(0),
@@ -244,8 +247,7 @@ OneShotSensor::OneShotSensor(int32_t sensorHandle, ISensorsEventCallback* callba
 UdfpsSensor::UdfpsSensor(int32_t sensorHandle, ISensorsEventCallback* callback)
     : OneShotSensor(sensorHandle, callback) {
     mSensorInfo.name = "UDFPS Sensor";
-    mSensorInfo.type =
-            static_cast<SensorType>(static_cast<int32_t>(SensorType::DEVICE_PRIVATE_BASE) + 1);
+    mSensorInfo.type = static_cast<SensorType>(kTypeBase + 1);
     mSensorInfo.typeAsString = "co.aospa.sensor.udfps";
     mSensorInfo.maxRange = 2048.0f;
     mSensorInfo.resolution = 1.0f;
@@ -355,8 +357,7 @@ void UdfpsSensor::interruptPoll() {
 SingleTapSensor::SingleTapSensor(int32_t sensorHandle, ISensorsEventCallback* callback)
     : OneShotSensor(sensorHandle, callback) {
     mSensorInfo.name = "Single Tap Sensor";
-    mSensorInfo.type =
-            static_cast<SensorType>(static_cast<int32_t>(SensorType::DEVICE_PRIVATE_BASE) + 2);
+    mSensorInfo.type = static_cast<SensorType>(kTypeBase + 2);
     mSensorInfo.typeAsString = "co.aospa.sensor.single_tap";
     mSensorInfo.maxRange = 2048.0f;
     mSensorInfo.resolution = 1.0f;
