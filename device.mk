@@ -33,10 +33,6 @@ PRODUCT_SHIPPING_API_LEVEL := 31
 TARGET_BOARD_PLATFORM := lahaina
 TARGET_BOOTLOADER_BOARD_NAME := lahaina
 
-# Authsecret
-PRODUCT_PACKAGES += \
-    android.hardware.authsecret@1.0.vendor
-
 # AVB
 BOARD_AVB_ENABLE := true
 
@@ -55,8 +51,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
-    libcamera2ndk_vendor \
-    vendor.qti.hardware.camera.postproc@1.0.vendor
+    libcamera2ndk_vendor
 
 # Dalvik
 $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
@@ -67,7 +62,6 @@ PRODUCT_COPY_FILES += \
 
 # DRM
 PRODUCT_PACKAGES += \
-    android.hardware.drm@1.4.vendor \
     android.hardware.drm@1.4-service.clearkey \
     libcrypto_shim
 
@@ -83,8 +77,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.fingerprint.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.fingerprint.xml
 
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.3-service.phone1 \
-    android.hardware.biometrics.fingerprint@2.3.vendor
+    android.hardware.biometrics.fingerprint@2.3-service.phone1
 
 $(call soong_config_set,surfaceflinger,udfps_lib,//$(DEVICE_PATH):libudfps_extension.phone1)
 
@@ -97,17 +90,8 @@ BOARD_HAVE_QCOM_FM := false
 PRODUCT_VENDOR_PROPERTIES += \
     persist.sys.fuse.passthrough.enable=true
 
-# Gatekeeper
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0 \
-    android.hardware.gatekeeper@1.0.vendor
-
 # Generic Kernel Headers
 TARGET_HAS_GENERIC_KERNEL_HEADERS := true
-
-# HIDL
-PRODUCT_PACKAGES += \
-    android.hidl.memory.block@1.0.vendor
 
 # Init
 PRODUCT_PACKAGES += \
@@ -121,11 +105,6 @@ PRODUCT_PACKAGES += \
 
 # ION
 $(call soong_config_set_bool,libion,legacy_impl,true)
-
-# Keymaster
-PRODUCT_PACKAGES += \
-   android.hardware.keymaster@4.1 \
-   android.hardware.keymaster@4.1.vendor
 
 # Manifests
 DEVICE_MANIFEST_FILE += \
@@ -143,13 +122,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_SOONG_NAMESPACES += \
     $(DEVICE_PATH)
 
-# Neural networks
-PRODUCT_PACKAGES += \
-    android.hardware.neuralnetworks@1.3.vendor
-
 # NFC
 PRODUCT_PACKAGES += \
-    android.hardware.nfc@1.2.vendor \
     android.hardware.nfc@1.0-impl:64 \
     NfcNci \
     Tag
@@ -240,14 +214,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_FULL_TREBLE_OVERRIDE := true
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
-# System Helper
-PRODUCT_PACKAGES += \
-    vendor.qti.hardware.systemhelper@1.0.vendor
-
 # Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator-V1-ndk.vendor
-
 PRODUCT_COPY_FILES += \
     vendor/qcom/opensource/vibrator/excluded-input-devices.xml:$(TARGET_COPY_OUT_VENDOR)/etc/excluded-input-devices.xml
 
